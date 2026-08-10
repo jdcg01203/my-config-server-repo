@@ -1,0 +1,32 @@
+server:
+  port: 8091
+  # ESTO ES LO QUE AÑADIMOS PARA VER LOS ERRORES
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: service-product
+
+  datasource:
+    # Si en Docker usaste el puerto 3306, pon 3306. Si usaste 1234, pon 1234.
+    url: jdbc:mysql://localhost:3306/product_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      # Como vas a crear los querys tú mismo en VS Code ponemos 'none'
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+
+# Opcional: Si quieres mantener los logs con IDs de rastreo que hablamos antes
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

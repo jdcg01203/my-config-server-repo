@@ -1,0 +1,33 @@
+server:
+  port: 8092
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: service-customer
+
+  datasource:
+    # Cambiamos el nombre de la base de datos a customer_db
+    # Usamos createDatabaseIfNotExist para que Java la cree en Docker si no existe
+    url: jdbc:mysql://localhost:3306/customer_db?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      # Se mantiene en none porque tú crearás las tablas en VS Code
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+# Configuración para que veas los IDs de rastreo en los logs
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
