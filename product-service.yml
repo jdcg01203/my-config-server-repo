@@ -7,7 +7,7 @@ server:
 
 spring:
   application:
-    name: service-product
+    name: product-service
 
   datasource:
     # Si en Docker usaste el puerto 3306, pon 3306. Si usaste 1234, pon 1234.

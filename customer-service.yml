@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: service-customer
+    name: customer-service
 
   datasource:
     # Cambiamos el nombre de la base de datos a customer_db
