@@ -28,9 +28,12 @@ spring:
         enabled: true
 
 eureka:
+  instance:
+    # AGREGA ESTO AQUÍ TAMBIÉN:
+    prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:8099/eureka/
+      defaultZone: http://localhost:8099/eureka/ 
 
 management:
   endpoints:

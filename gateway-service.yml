@@ -2,6 +2,9 @@ server:
   port: 8080
 
 eureka:
+  instance:
+    # ESTO ES LO QUE FALTA:
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: http://localhost:8099/eureka/
