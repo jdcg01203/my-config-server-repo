@@ -16,12 +16,27 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: none # Usa 'update' si quieres que Spring cree las tablas solo
     properties:
       hibernate:
         format_sql: true
 
+  # Aquí metemos la configuración de Feign dentro del mismo bloque spring
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8099/eureka/ 
+      defaultZone: http://localhost:8099/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
