@@ -17,10 +17,12 @@ spring:
           uri: lb://customer-service
           predicates:
             - Path=/customers/**
+
         - id: product-service
-          uri: lb://service-product
+          uri: lb://product-service # <--- Corregido (antes decía service-product)
           predicates:
             - Path=/products/**
+
         - id: shopping-service
           uri: lb://shopping-service
           predicates:
