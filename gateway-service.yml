@@ -30,3 +30,13 @@ spring:
           uri: lb://shopping-service
           predicates:
             - Path=/invoices/**
+
+# ESTA ES LA PIEZA QUE FALTA PARA QUE SE PONGA EN VERDE:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Abre los endpoints para que el Admin los lea
+  endpoint:
+    health:
+      show-details: always            
